@@ -31,11 +31,26 @@ def part1(file):
         finds += len(re.findall("SAMX",line))
     return finds
 
+# -1,-1 +1,-1
+#-1,+1 +1,+1
+#
+def part2(file):
+    lines = []
+    for line in file:
+        lines.append(line)
+
+    for i in range(1,len(lines)-1):
+        for j in range(1,len(lines[i])-1):
+            if lines[i][j] == "A":
+                diagonal = lines[i-1][j-1] + 'A' + lines[j+1][i+1]
+                print(diagonal)    
+            
+
 def main():
     file = open("input.txt", "r")
     print("Part 1: ", part1(file))
-    # file = open("input.txt", "r")
-    # print("Part 2: ", part2(file))
+    file = open("example.txt", "r")
+    print("Part 2: ", part2(file))
 
 if __name__ == "__main__":
     main()
